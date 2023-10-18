@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Callback Hell Timer</title>
+</head>
+<body>
+    <div id="timer">Timer: 0</div>
+    <script>
+        let count = 0;
+
+        const startTimer = (callback) => {
+            setTimeout(() => {
+                count++;
+                callback();
+            }, 1000);
+        };
+
+        const displayTime = () => {
+            document.getElementById('timer').textContent = `Timer: ${count}`;
+            startTimer(displayTime);
+        };
+
+        startTimer(displayTime);
+    </script>
+</body>
+</html>
